@@ -9,4 +9,9 @@ class StringCalculator:
             delimiter = parts[0][2:]
             numbers = parts[1]
         
-        return sum(map(int, numbers.replace("\n", delimiter).split(delimiter)))
+        number_list = list(map(int, numbers.replace("\n", delimiter).split(delimiter)))
+        negatives = [num for num in number_list if num < 0]
+        if negatives:
+            raise ValueError(f"Negatives not allowed: {negatives}")
+        
+        return sum(number_list)
