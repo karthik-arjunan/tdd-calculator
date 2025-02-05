@@ -27,11 +27,10 @@ class TestStringCalculator(unittest.TestCase):
         calculator = StringCalculator()
         with self.assertRaises(ValueError) as context:
             calculator.add("-1")
-        self.assertEqual(str(context.exception), "negatives not allowed: -1")
+        self.assertEqual(str(context.exception), "Negatives not allowed: [-1]")
         with self.assertRaises(ValueError) as context:
             calculator.add("-1,2,-3")
-        self.assertTrue("negative numbers not allowed" in str(context.exception))
-        self.assertTrue("-2,-3" in str(context.exception))
+        self.assertEqual(str(context.exception), "Negatives not allowed: [-1, -3]")
         
     
         
